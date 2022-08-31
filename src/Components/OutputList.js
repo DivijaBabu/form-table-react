@@ -6,7 +6,7 @@ class OutputList extends React.Component {
       ArrayItems: props.items,
       editItems: true,
     };
-    this.setItem = this.setItem.bind(this);
+    this.setEdit = this.setEdit.bind(this);
     this.updateItem = this.updateItem.bind(this);
   }
   static getDerivedStateFromProps(props, state) {
@@ -21,7 +21,7 @@ class OutputList extends React.Component {
       };}
     return null;
   }
-  setItem(element, key) {
+  setEdit(element, key) {
     let newArray = [...this.state.ArrayItems];
     const index = newArray.findIndex((i) => i.key === key);
     const newObj = {
@@ -51,9 +51,9 @@ class OutputList extends React.Component {
           return (
             <div key={item.key}>
               <p>
-                <input type="text" value={item.firstname} name="firstname" onChange={(event) => { this.setItem(event, item.key);}}/>
-                <input type="text" value={item.lastname} id={item} name="lastname" onChange={(event) => { this.setUpdate(event, item.key);}}/>
-                <button onClick={() => this.props.deleteItem(item.key)}>Remove</button>
+                <input type="text" value={item.firstname} name="firstname" onChange={(event) => { this.setEdit(event, item.key);}}/>
+                <input type="text" value={item.lastname} id={item} name="lastname" onChange={(event) => { this.setEdit(event, item.key);}}/>
+                <button onClick={() => this.props.removeItem(item.key)}>Delete</button>
                 <button onClick={() => this.updateItem(item.key)}>Edit</button>
               </p>
             </div>

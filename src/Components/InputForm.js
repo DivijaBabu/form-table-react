@@ -11,9 +11,9 @@ class InputForm extends React.Component {
         lastname: "",
         key: "",
       },};
-    this.deleteItem = this.deleteItem.bind(this);
+    this.removeItem = this.removeItem.bind(this);
   }
-  handleInput = (event) => {
+  handleChange = (event) => {
     if (event.target.name === "firstname") {
       this.setState({
         ValueItem: {
@@ -30,10 +30,7 @@ class InputForm extends React.Component {
         },});}};
   addItem = (event) => {
     event.preventDefault();
-    if (
-      this.state.ValueItem.firstname !== "" &&
-      this.state.ValueItem.lastname !== ""
-    ) {
+    if (this.state.ValueItem.firstname !== "" && this.state.ValueItem.lastname !== "") {
       this.setState({
         items: [...this.state.items, this.state.ValueItem],
         ValueItem: {
@@ -41,10 +38,10 @@ class InputForm extends React.Component {
           lastname: "",
           key: "",
         },});}};
-  deleteItem(key) {
-    const filteredItems = this.state.items.filter((item) => item.key !== key);
+  removeItem(key) {
+    const itemRemove = this.state.items.filter((item) => item.key !== key);
     this.setState({
-      items: filteredItems,
+      items: itemRemove,
     });}
   updateItem(data) {
     this.setState({
@@ -53,11 +50,11 @@ class InputForm extends React.Component {
   render() {
     return (
       <div >
-        <OutputList items={this.state.items} setItem={(data1) => this.setItem(data1)} deleteItem={this.deleteItem} updateItem={(data) => this.updateItem(data)}
+        <OutputList items={this.state.items} setEdit={(data1) => this.setEdit(data1)} removeItem={this.removeItem} updateItem={(data) => this.updateItem(data)}
         />
         <form onSubmit={this.addItem}>
-          <input type="text" value={this.state.ValueItem.firstname} onChange={this.handleInput} placeholder="Enter First Name" name="firstname"/>
-          <input type="text" value={this.state.ValueItem.lastname} onChange={this.handleInput} placeholder="Enter Last Name"name="lastname"/>
+          <input type="text" value={this.state.ValueItem.firstname} onChange={this.handleChange} placeholder="Enter First Name" name="firstname"/>
+          <input type="text" value={this.state.ValueItem.lastname} onChange={this.handleChange} placeholder="Enter Last Name"name="lastname"/>
           <button disabled={this.state.ValueItem.firstname === "" || this.state.ValueItem.lastname === ""}> Add </button>
         </form>
         <Table todoItems={this.state.items} />
