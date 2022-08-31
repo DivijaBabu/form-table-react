@@ -50,8 +50,7 @@ class InputForm extends React.Component {
   render() {
     return (
       <div >
-        <OutputList items={this.state.items} setEdit={(data1) => this.setEdit(data1)} removeItem={this.removeItem} updateItem={(data) => this.updateItem(data)}
-        />
+        <OutputList items={this.state.items} setEdit={(data1) => this.setEdit(data1)} removeItem={this.removeItem} updateItem={(data) => this.updateItem(data)}/>
         <form onSubmit={this.addItem}>
           <input type="text" value={this.state.ValueItem.firstname} onChange={this.handleChange} placeholder="Enter First Name" name="firstname"/>
           <input type="text" value={this.state.ValueItem.lastname} onChange={this.handleChange} placeholder="Enter Last Name"name="lastname"/>
