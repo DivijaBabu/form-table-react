@@ -54,7 +54,7 @@ class OutputList extends React.Component {
                 <input type="text" value={item.firstname} name="firstname" onChange={(event) => { this.setEdit(event, item.key);}}/>
                 <input type="text" value={item.lastname} id={item} name="lastname" onChange={(event) => { this.setEdit(event, item.key);}}/>
                 <button onClick={() => this.props.removeItem(item.key)}>Delete</button>
-                <button onClick={() => this.updateItem(item.key)}>Edit</button>
+                <button disabled={item.firstname === "" || item.lastname === ""} onClick={() => this.updateItem(item.key)}>Edit</button>
               </p>
             </div>
           );})}
