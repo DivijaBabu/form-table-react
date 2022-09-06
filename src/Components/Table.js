@@ -9,7 +9,7 @@ class Table extends React.Component {
               <th><h3>FIRSTNAME </h3></th>
               <th><h3>LASTNAME</h3></th></tr>
           </thead>
-          {this.props.todoItems.map((item, index) => {
+          {this.props.tableItems.map((item, index) => {
             return (
               <tbody key={item.key}>
                 <tr> <td>{index + 1}</td>

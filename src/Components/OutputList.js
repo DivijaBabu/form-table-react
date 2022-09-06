@@ -6,19 +6,19 @@ class OutputList extends React.Component {
       ArrayItems: props.items,
       editItems: true,
     };
-    this.setEdit = this.setEdit.bind(this);
-    this.updateItem = this.updateItem.bind(this);
   }
   static getDerivedStateFromProps(props, state) {
     if (state.editItems) {
       return {
         ArrayItems: state.ArrayItems,
         editItems: false,
-      };} 
+      };
+    }
     else if (props.items !== state.ArrayItems) {
       return {
         ArrayItems: props.items,
-      };}
+      };
+    }
     return null;
   }
   setEdit(element, key) {
@@ -51,13 +51,16 @@ class OutputList extends React.Component {
           return (
             <div key={item.key}>
               <p>
-                <input type="text" value={item.firstname} name="firstname" onChange={(event) => { this.setEdit(event, item.key);}}/>
-                <input type="text" value={item.lastname} id={item} name="lastname" onChange={(event) => { this.setEdit(event, item.key);}}/>
-                <button onClick={() => this.props.removeItem(item.key)}>Delete</button>
-                <button disabled={item.firstname === "" || item.lastname === ""} onClick={() => this.updateItem(item.key)}>Edit</button>
+                <input type="text" value={item.firstname} name="firstname" onChange={(event) => { this.setEdit(event, item.key); }} />
+                <input type="text" value={item.lastname} id={item} name="lastname" onChange={(event) => { this.setEdit(event, item.key); }} />
+                <button id="buttons" onClick={() => this.props.removeItem(item.key)}>Delete</button>
+                <button id="buttons" disabled={item.firstname === "" || item.lastname === ""} onClick={() => this.updateItem(item.key)}>Edit</button>
               </p>
             </div>
-          );})}
+          );
+        })}
       </div>
-    );}}
+    );
+  }
+}
 export default OutputList;
